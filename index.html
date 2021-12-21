@@ -11,9 +11,19 @@
 
 <body>
     <div class="todo__parent">
+
+        <section>
+            <div>Simple</div>
+            <div style="font-weight: bold;font-size: 1.2rem;">To Do App</div>
+        </section>
         <form onsubmit="return submitHandler(event)" id="textbox__container">
-            <input type="text" autocomplete="off" id="task__to__be__added" />
-            <button type="submit">Add</button>
+            <input 
+            type="text" 
+            autocomplete="off"
+            id="task__to__be__added" 
+            placeholder="Enter the task to be added here..."
+            />
+            <button class="add__btn" type="submit">Add</button>
         </form>
 
         <ul id="item__list">

@@ -1,34 +1,43 @@
+const inputSelectionString = "#task__to__be__added"
+
 let tasks = []
 
 const renderTasks = () => {
     document.querySelector("#item__list").innerHTML = ""
     tasks.forEach(({ name, isCompleted }, index) => {
         let myChild = document.createElement('li')
-        myChild.appendChild(document.createTextNode(name))
+
+        let taskName = document.createElement('div')
+        taskName.className = "task__name"
+        taskName.appendChild(document.createTextNode(name))
+
+        myChild.appendChild(taskName)
         myChild.id = "task__" + index
         myChild.classList.add("task__item")
+
+
+        let rightSideContainer = document.createElement('div')
+        rightSideContainer.className = "right__side__action"
 
         if (isCompleted) {
             myChild.classList.add("task__complete")
         }
         else {
             let markDoneBtn = document.createElement("button")
-            markDoneBtn.innerHTML = "Mark As Done"
+            markDoneBtn.innerHTML = "Mark Done"
+            markDoneBtn.className = "mark__done__btn"
             markDoneBtn.onclick = () => markDoneHandler(index)
-            myChild.appendChild(markDoneBtn)
+            rightSideContainer.appendChild(markDoneBtn)
         }
 
 
         let removeBtn = document.createElement("button")
-        removeBtn.innerHTML = "Remove"
+        removeBtn.className = "remove__btn"
+        removeBtn.innerHTML = "❌"
         removeBtn.onclick = () => removeHandler(index)
+        rightSideContainer.appendChild(removeBtn)
 
-
-        // childBtn.setAttribute("data-index", index)
-        // childBtn.setAttribute("data-listId", "task__" + index)
-
-        myChild.appendChild(removeBtn)
-
+        myChild.appendChild(rightSideContainer)
         document.querySelector("#item__list").appendChild(myChild)
     })
 }
@@ -52,8 +61,9 @@ const markDoneHandler = index => {
 
 const submitHandler = e => {
     e.preventDefault()
-    const taskSubmitted = document.querySelector("#task__to__be__added").value
-    addTask(taskSubmitted)
+    const taskSubmitted = document.querySelector(inputSelectionString).value
+    if (taskSubmitted.trim()) addTask(taskSubmitted)
+    document.querySelector(inputSelectionString).value = ""
 }
 
 
