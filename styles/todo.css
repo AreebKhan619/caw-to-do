@@ -1,0 +1,7 @@
+.todo__parent{
+    padding: 20px;
+}
+
+.task__complete{
+    text-decoration: line-through;
+}

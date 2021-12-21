@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple To Do App using VanillaJS</title>
+    <link rel="stylesheet" href="./styles/todo.css" />
+</head>
+
+<body>
+    <div class="todo__parent">
+        <form onsubmit="return submitHandler(event)" id="textbox__container">
+            <input type="text" autocomplete="off" id="task__to__be__added" />
+            <button type="submit">Add</button>
+        </form>
+
+        <ul id="item__list">
+        </ul>
+    </div>
+
+    <script src="./scripts/todo.js"></script>
+
+</body>
+
+</html>
